@@ -1,0 +1,21 @@
+channels:
+  - id: umum
+    name: Meja Konsultasi Umum
+    description: Konsultasi hukum, triase isu, dan arahan strategi dari General Counsel.
+    permitted_agents: [general-counsel, legal-researcher]
+    allowed_groups: [all]
+  - id: review-kontrak
+    name: Meja Review & Redline Kontrak
+    description: Review klausul, surgical redline, dan enforcement playbook kontrak.
+    permitted_agents: [legal-drafter, general-counsel]
+    allowed_groups: [all, legal]
+  - id: riset-putusan-ma
+    name: Meja Yurisprudensi & Regulasi
+    description: Riset Putusan MA, hierarki peraturan, dan status keberlakuan norma.
+    permitted_agents: [legal-researcher, general-counsel]
+    allowed_groups: [all, legal]
+  - id: due-diligence
+    name: Meja Analisis Data Room & Kepatuhan
+    description: Due diligence dokumen, perizinan OSS-RBA, KBLI, dan administrasi AHU.
+    permitted_agents: [compliance-officer, general-counsel]
+    allowed_groups: [all, legal, compliance]

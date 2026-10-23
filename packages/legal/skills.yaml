@@ -1,0 +1,98 @@
+skills:
+  - slug: contract-redline-playbook
+    title: Review kontrak dengan playbook
+    summary: Bandingkan kontrak dengan playbook, lalu hasilkan redline DOCX dan issue log berlabel risiko.
+    instructions: |-
+      Anda sedang melakukan review kontrak berdasarkan playbook firma. Mulai dengan membaca dokumen kontrak dan playbook yang diberikan. Jika playbook tidak ada, katakan demikian dan gunakan standar konservatif yang dapat Anda jelaskan.
+
+      Untuk setiap klausul material, identifikasi: apa yang playbook minta, apa yang kontrak katakan, selisihnya, dan risiko bagi klien. Jalankan tool redline pada dokumen DOCX dengan playbook yang sama. Hasilnya harus berupa DOCX dengan track changes dan komentar, bukan ringkasan di chat saja.
+
+      Terapkan surgical redlining: perubahan minimal invasive, satu kata atau satu klausul bila cukup. Pertahankan drafting dan commercial leverage klien. Jangan mengubah angka komersial, harga, lingkup, atau alokasi risiko tanpa instruksi eksplisit. Untuk setiap temuan, beri severity HIGH, MEDIUM, atau LOW, referensi klausul, usulan teks minimal, alasan hukum, dan posisi fallback.
+
+      Jangan mengarang nomor UU, PP, Permen, pasal, atau putusan. Jika dasar hukum tidak ada di dokumen atau tool, tulis "tidak terverifikasi". Sebutkan nama file output redline dan ringkas temuan yang tidak dapat diproses karena dokumen tidak lengkap.
+    tools:
+      - "@legal/redline"
+
+  - slug: consolidate-contract-addenda
+    title: Konsolidasi kontrak & addendum
+    summary: Petakan histori kontrak pokok beserta seluruh addendum dan buat draf konsolidasi yang berlaku saat ini.
+    instructions: |-
+      Petakan riwayat perjanjian yang memiliki multi-addendum atau side letters. Buat timeline perubahan klausul dari perjanjian pokok sampai addendum terakhir.
+      Identifikasi pasal mana yang telah diamandemen, diganti, atau dihapus. Susun working draft konsolidasi (clean version) yang mencerminkan hak dan kewajiban para pihak yang berlaku detik ini.
+    tools:
+      - "@legal/redline"
+
+  - slug: ocr-legal-document
+    title: Ekstrak dokumen legal hasil scan
+    summary: Baca PDF scan, akta, perjanjian, atau berkas perkara dengan OCR Bahasa Indonesia dan Inggris.
+    instructions: |-
+      Gunakan OCR ketika dokumen berupa scan, foto, atau PDF yang teksnya tidak dapat dipilih. Jalankan tool OCR dengan mode auto, dan gunakan mode always hanya jika kualitas teks rendah. Bahasa default adalah Indonesia dan Inggris.
+
+      Setelah ekstraksi, periksa hasilnya: nomor halaman, bagian yang tidak terbaca, dan karakter yang tampak salah. Jangan menganggap teks OCR selalu akurat. Kutip bagian yang Anda gunakan dan tandai bagian yang tidak terbaca sebagai "tidak terbaca" daripada menebak.
+
+      Kembalikan teks lengkap atau bagian yang diminta, metadata dokumen, dan daftar halaman yang di-OCR. Jika output disimpan sebagai file, sebutkan nama filenya. Jangan mengarang isi dokumen yang gagal diekstrak.
+    tools:
+      - "@legal/ocr"
+
+  - slug: search-putusan-ma
+    title: Cari Putusan MA
+    summary: Telusuri yurisprudensi Putusan MA dan kutip amar serta ratio decidendi secara terverifikasi.
+    instructions: |-
+      Cari putusan melalui tool pencarian korpus legal. Susun query dari isu hukum, bukan dari nama pihak atau cerita panjang. Gunakan scope putusan dan filter tahun, kamar, atau jenis perkara bila tersedia.
+
+      Baca amar putusan dan pertimbangan hukum, bukan hanya ringkasan. Untuk setiap putusan yang Anda pakai, catat nomor perkara, kamar, tahun, tanggal, amar, dan bagian pertimbangan yang relevan. Tentukan apakah bagian itu ratio decidendi atau obiter dicta, dan jangan menyamakan keduanya.
+
+      Sitasi dalam format: Putusan MA No. <nomor perkara>/<kamar>/<tahun>, diikuti amar putusan. Jangan mengarang nomor perkara, kamar, tahun, atau amar. Jika tool tidak menemukan putusan yang tepat, katakan "tidak terverifikasi" dan jelaskan query yang sudah dicoba. Jangan mengutip putusan dari ingatan.
+    tools:
+      - "@legal/search-db"
+
+  - slug: analyze-statutory-hierarchy
+    title: Analisis hierarki peraturan
+    summary: Petakan regulasi yang relevan, status keberlakuannya, dan benturan norma dalam hierarki Indonesia.
+    instructions: |-
+      Telusuri regulasi melalui korpus legal. Kumpulkan hanya peraturan yang benar-benar relevan dengan isu: UUD 1945, Ketetapan MPR, UU atau Perppu, PP, Perpres, Peraturan Menteri, dan peraturan daerah sesuai kewenangannya.
+
+      Untuk setiap regulasi, catat nomor, tahun, judul, pasal yang dikutip, tanggal berlaku, dan status: berlaku, diubah, dicabut, atau diganti. Periksa peraturan pelaksana dan ketentuan peralihan yang memengaruhi kesimpulan.
+
+      Terapkan hierarki dan asas: lex superior derogat legi inferiori, lex specialis derogat legi generali, dan lex posterior derogat legi priori. Jika ada benturan, jelaskan norma mana yang lebih tinggi, mana yang lebih khusus, dan mana yang lebih baru, lalu beri alasan.
+
+      Sitasi dalam format UU/PP/Permen No. X Tahun Y Pasal Z ayat (N). Jangan mengarang nomor, pasal, atau status keberlakuan. Jika tidak ada di hasil tool, tulis "tidak terverifikasi" dan sebutkan sumber yang perlu diperiksa.
+    tools:
+      - "@legal/search-db"
+
+  - slug: generate-due-diligence-matrix
+    title: Matriks Legal Due Diligence (LDD)
+    summary: Periksa data room korporasi dan hasilkan workbook Excel 5 sheet terstruktur lengkap dengan red flags.
+    instructions: |-
+      Jalankan tool due diligence pada direktori data room atau berkas analisis perkara.
+      Pastikan workbook Excel memuat 5 sheet: Executive Summary & Red Flags, Struktur Saham & Direksi, Perizinan OSS-RBA & KBLI, Negative Covenants utang bank, dan Sengketa Litigasi.
+      Tandai status kepatuhan: Terpenuhi, Tidak Terpenuhi, Tidak Ditemukan, atau Perlu Klarifikasi, serta beri label severity (HIGH/MEDIUM/LOW).
+    tools:
+      - "@legal/due-diligence"
+      - "@legal/ocr"
+
+  - slug: draft-litigation-pleadings
+    title: Penyusunan berkas perkara sidang & somasi
+    summary: Draf formal Surat Somasi (1 & 2), Gugatan Wanprestasi/PMH, dan Matriks Pembuktian Sidang dalam format DOCX.
+    instructions: |-
+      Susun draf dokumen litigasi formal berstandar pengadilan Indonesia.
+      Untuk somasi: tegaskan dasar cidera janji atau perbuatan melawan hukum, kerugian terukur, dan tenggat waktu pemenuhan kewajiban yang wajar.
+      Untuk gugatan: susun Posita secara kronologis dan logis, pastikan sinkron dengan Petitum (primer dan subsider) agar tidak obscuur libel.
+      Untuk matriks pembuktian: petakan setiap alat bukti surat (P-1..Pn atau T-1..Tn) ke nomor dalil posita yang bersangkutan beserta relevansinya.
+    tools:
+      - "@legal/litigation-draft"
+
+  - slug: draft-legal-opinion-memo
+    title: Penyusunan Legal Opinion (LO) Memo
+    summary: Draf opini hukum komprehensif 5 bagian standar firma hukum papan atas dalam format DOCX.
+    instructions: |-
+      Susun Legal Opinion formal dengan struktur 5 bagian:
+      1. Fakta-Fakta Hukum (Statement of Facts)
+      2. Rumusan Masalah Hukum (Legal Issues)
+      3. Kerangka Regulasi & Yurisprudensi (Statutory & Precedent Framework)
+      4. Analisis Yuridis Mendalam (Substantive Legal Analysis)
+      5. Kesimpulan & Rekomendasi Mitigasi Risiko (Conclusions & Actionable Advice)
+      Pastikan setiap dasar hukum mencantumkan rujukan resmi yang terverifikasi dan bebas spekulasi.
+    tools:
+      - "@legal/opinion-memo"
+      - "@legal/search-db"
