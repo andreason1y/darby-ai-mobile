@@ -29,14 +29,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
       - name: Prebuild Android native code
-        run: npx expo prebuild --platform android --clean
+        run: npx expo prebuild --platform android --clean --no-install
+        env:
+          CI: 1
 
       - name: Build Android Debug APK
         run: |
